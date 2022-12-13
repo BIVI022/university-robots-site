@@ -1,0 +1,45 @@
+@import "colors";
+@import "fonts";
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+a:focus,
+a:active {
+    outline: none;
+}
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+html,
+body,
+#__next {
+    height: 100%;
+    font-family: Montserrat;
+}
+
+input,
+button,
+textarea {
+    background: transparent;
+}
+textarea {
+    resize: none;
+}

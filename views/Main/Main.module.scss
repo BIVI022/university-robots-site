@@ -1,0 +1,145 @@
+.main {
+    display: grid;
+    grid-gap: 100px;
+    gap: 100px;
+}
+
+.welcome {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 150px;
+    grid-gap: 20px;
+    gap: 20px;
+    &__image {
+        > img {
+            max-width: 700px;
+            max-height: 471px;
+        }
+    }
+    &__title {
+        font-size: 64px;
+        font-weight: 800;
+    }
+    &__subtitle {
+        margin-top: 10px;
+        font-size: 20px;
+        color: #4c5673;
+        font-weight: 600;
+        max-width: 600px;
+        line-height: 28px;
+    }
+    &__learnMoreBtn {
+        margin-top: 50px;
+        font-size: 20px;
+        padding: 25px 40px;
+        border-radius: 26px;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.bgCloud {
+    width: 260px;
+    height: 160px;
+    background-image: url("/images/cloud.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    z-index: -1;
+    &_above {
+        left: 0;
+        top: 20px;
+        transform: translateX(-30%);
+    }
+    &_main {
+        width: 237px;
+        height: 140px;
+        top: 320px;
+        right: 0;
+        transform: translateX(35%);
+    }
+    &_below {
+        width: 459px;
+        height: 291px;
+        top: 720px;
+        left: 10px;
+    }
+}
+
+.section {
+    $this: &;
+    width: 100%;
+    &:nth-of-type(2n) {
+        #{$this}__title {
+            text-align: right;
+        }
+    }
+    &__title {
+        font-size: 36px;
+    }
+}
+
+.about {
+    padding-bottom: 100px;
+}
+
+.courses {
+    padding-bottom: 100px;
+    &__list {
+        margin-top: 50px;
+        display: grid;
+        $gap: 90px;
+        grid-gap: $gap;
+        gap: $gap;
+        > div {
+            &:nth-child(2n) {
+                > div {
+                    flex-direction: row-reverse;
+                }
+            }
+        }
+    }
+}
+
+.course {
+    display: flex;
+    justify-content: space-between;
+    &__title {
+        text-transform: uppercase;
+        font-size: 26px;
+        font-weight: 800;
+    }
+    &__minAge {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    &__description {
+        margin-top: 10px;
+        max-width: 550px;
+        font-size: 19px;
+        color: #4c5673;
+    }
+    &__image {
+        > img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+    }
+}
+
+@mixin roadmap-item-animation {
+    opacity: 0;
+}
+.animationLeft {
+    @include roadmap-item-animation();
+    transform: translateX(-100px);
+}
+.animationRight {
+    @include roadmap-item-animation();
+    transform: translateX(100px);
+}
+.animationShow {
+    opacity: 1;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: translateX(0);
+}

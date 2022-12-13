@@ -1,0 +1,18 @@
+.header {
+    padding: 10px 0;
+    &__navbar {
+        justify-content: flex-end;
+        display: flex;
+        grid-gap: 90px;
+        gap: 90px;
+        font-weight: 700;
+        > div {
+            cursor: pointer;
+            transition: background-color 0.3s;
+            &:hover {
+                background-color: #eee;
+            }
+            padding: 20px;
+        }
+    }
+}
