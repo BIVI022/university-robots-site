@@ -125,6 +125,11 @@
             max-height: 300px;
         }
     }
+    &__openBtn {
+        margin-top: 20px;
+        padding: 15px 30px;
+        font-size: 16px;
+    }
 }
 
 @mixin roadmap-item-animation {

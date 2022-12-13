@@ -5,10 +5,10 @@ interface NavigationProps {
 const Navigation = ({ className = '' }: NavigationProps) => {
     return (
         <nav className={className}>
-            <div className="navbar__item">Главная</div>
-            <div className="navbar__item">О нас</div>
-            <div className="navbar__item">Контакты</div>
-            <div className="navbar__item">Курсы</div>
+            <div>Главная</div>
+            <div>О нас</div>
+            <div>Контакты</div>
+            <div>Курсы</div>
         </nav>
     );
 };

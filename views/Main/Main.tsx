@@ -151,6 +151,12 @@ const Course = ({
                 С {minAge} лет
             </div>
             <div className={styles.course__description}>{description}</div>
+            <InfoButton
+                className={styles.course__openBtn}
+                onClick={() => alert('In develop')}
+            >
+                Перейти к курсу
+            </InfoButton>
         </div>
         <div className={styles.course__image}>
             <img src={image} />

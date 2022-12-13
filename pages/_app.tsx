@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <>
             <Head>
                 <title>Робототехника</title>
+                <link rel="icon" href="/images/brgu-logo.png" />
             </Head>
             <MainLayout>
                 <Component {...pageProps} />
