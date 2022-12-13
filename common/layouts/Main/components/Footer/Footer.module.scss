@@ -16,6 +16,13 @@
         display: grid;
         grid-gap: 10px;
         gap: 10px;
+        > div {
+            transition: color 0.3s;
+            &:hover {
+                color: #eee;
+            }
+            cursor: pointer;
+        }
     }
     &__container {
         display: grid;
