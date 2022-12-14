@@ -56,6 +56,18 @@ const Main = () => {
         },
     ];
 
+    const scrollToCoursesSection = () => {
+        const coursesSection = document.querySelector<HTMLDivElement>(
+            `.${styles.courses}`
+        );
+        if (coursesSection) {
+            window.scrollTo({
+                top: coursesSection.offsetTop,
+                behavior: 'smooth',
+            });
+        }
+    };
+
     return (
         <div className={styles.main}>
             <Container className={styles.welcome}>
@@ -79,7 +91,10 @@ const Main = () => {
                         программирование, вместе с учениками решаем наиважнейшие
                         задачи в программировании!
                     </div>
-                    <InfoButton className={styles.welcome__learnMoreBtn}>
+                    <InfoButton
+                        onClick={scrollToCoursesSection}
+                        className={styles.welcome__learnMoreBtn}
+                    >
                         Узнать больше
                     </InfoButton>
                 </div>

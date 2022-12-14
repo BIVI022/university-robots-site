@@ -41,6 +41,7 @@ const Navigation = ({ className = '' }: NavigationProps) => {
             });
         }
     };
+
     const scrollToCoursesSection = () => {
         const coursesSection = document.querySelector<HTMLDivElement>(
             `.${mainViewStyles.courses}`
