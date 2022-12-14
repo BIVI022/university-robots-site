@@ -81,7 +81,7 @@ const Main = () => {
                     className={`${styles.bgCloud} ${styles.bgCloud_below}`}
                 ></div>
                 <div>
-                    <h1 className={styles.welcome__title}>Робототехника</h1>
+                    <h1 className={styles.welcome__title}>STEM-Центр</h1>
                     <div className={styles.welcome__subtitle}>
                         Создавай сайты, игры, проектируй роботов - всему этому
                         вы научитесь на данном факультете. Вы узнаете, как

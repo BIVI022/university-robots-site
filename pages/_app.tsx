@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
-                <title>Робототехника</title>
+                <title>STEM-Центр</title>
                 <link rel="icon" href="/images/brgu-logo.png" />
             </Head>
             <MainLayout>
