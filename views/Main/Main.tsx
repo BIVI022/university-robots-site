@@ -102,9 +102,9 @@ const Main = () => {
                     <img src="/images/welcome-bg.png" alt="robot" />
                 </div>
             </Container>
-            <Section title="О нас" className={styles.about}>
+            {/* <Section title="О нас" className={styles.about}>
                 <div>Здесь будут фотографии(если они есть :D)</div>
-            </Section>
+            </Section> */}
             <Section title="Курсы" className={styles.courses}>
                 <div className={styles.courses__list}>
                     {courses.map((course, i) => (
