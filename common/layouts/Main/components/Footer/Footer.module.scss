@@ -17,6 +17,7 @@
         grid-gap: 10px;
         gap: 10px;
         > div {
+            user-select: none;
             transition: color 0.3s;
             &:hover {
                 color: #eee;

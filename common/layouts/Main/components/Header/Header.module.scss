@@ -8,6 +8,7 @@
         font-size: 18px;
         font-weight: 700;
         > div {
+            user-select: none;
             cursor: pointer;
             transition: background-color 0.3s;
             &:hover {
@@ -22,6 +23,7 @@
     }
     &__burgerNav {
         > div {
+            user-select: none;
             padding: 10px;
         }
     }
