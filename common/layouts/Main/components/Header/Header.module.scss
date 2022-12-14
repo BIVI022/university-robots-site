@@ -3,8 +3,9 @@
     &__navbar {
         justify-content: flex-end;
         display: flex;
-        grid-gap: 90px;
-        gap: 90px;
+        grid-gap: 50px;
+        gap: 50px;
+        font-size: 18px;
         font-weight: 700;
         > div {
             cursor: pointer;
@@ -14,6 +15,47 @@
             }
             padding: 20px;
             border-radius: 12px;
+        }
+    }
+    &__burger {
+        display: none;
+    }
+    &__burgerNav {
+        > div {
+            padding: 10px;
+        }
+    }
+    @media (max-width: 992px) {
+        &__navbar {
+            $gap: 30px;
+            grid-gap: $gap;
+            gap: $gap;
+            > div {
+                padding: 15px;
+                border-radius: 10px;
+            }
+        }
+    }
+    @media (max-width: 767px) {
+        &__navbar {
+            font-size: 16px;
+            $gap: 20px;
+            grid-gap: $gap;
+            gap: $gap;
+            > div {
+                padding: 15px;
+                border-radius: 10px;
+            }
+        }
+    }
+    @media (max-width: 600px) {
+        &__navbar {
+            display: none;
+        }
+        padding: 20px 0;
+        &__burger {
+            display: flex;
+            justify-content: flex-end;
         }
     }
 }

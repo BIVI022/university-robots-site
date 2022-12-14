@@ -40,7 +40,7 @@ const Main = () => {
         },
         {
             title: 'Web-разработка',
-            minAge: 13,
+            minAge: 12,
             description:
                 'Создавать сайты, приложения, трехмерные презентации, игры и даже социальные сети — всему этому вы научитесь на данным курсе. Вы узнаете, как оформлять сайт, познакомитесь с языком программирования JavaScript, научитесь использовать библиотеки JQuery и Bootstrap, необходимые для создания web-приложений, освоите продвинутые технологии и многое другое.',
             colorTheme: 'rgb(40 98 56)',
@@ -48,7 +48,7 @@ const Main = () => {
         },
         {
             title: 'Разработка игр (SCRATCH)',
-            minAge: 13,
+            minAge: 8,
             description:
                 'Курс по разработке на Scratch познакомит вашего ребенка с основами программирования в уникальном творческом формате, а результатом станет его первый — собственный! — анимированный фильм, которым вы обязательно будете гордиться.',
             colorTheme: 'rgb(232 167 24)',
@@ -63,7 +63,7 @@ const Main = () => {
                     className={`${styles.bgCloud} ${styles.bgCloud_above}`}
                 ></div>
                 <div
-                    className={`${styles.bgCloud} ${styles.bgCloud_main}`}
+                    className={`${styles.bgCloud} ${styles.bgCloud_middle}`}
                 ></div>
                 <div
                     className={`${styles.bgCloud} ${styles.bgCloud_below}`}
@@ -140,7 +140,7 @@ const Course = ({
     image,
 }: CourseProps) => (
     <div className={styles.course}>
-        <div>
+        <div className={styles.course__info}>
             <div style={{ color: colorTheme }} className={styles.course__title}>
                 {title}
             </div>
@@ -161,6 +161,12 @@ const Course = ({
         <div className={styles.course__image}>
             <img src={image} />
         </div>
+        <InfoButton
+            className={`${styles.course__openBtn} ${styles.course__openBtn_below}`}
+            onClick={() => alert('In develop')}
+        >
+            Перейти к курсу
+        </InfoButton>
     </div>
 );
 

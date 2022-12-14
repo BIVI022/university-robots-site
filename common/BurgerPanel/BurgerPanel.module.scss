@@ -1,0 +1,64 @@
+.panel {
+    $this: &;
+    $animation: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    position: relative;
+    display: flex;
+    align-items: center;
+    &_open {
+        #{$this}__burger {
+            span {
+                &:nth-child(1) {
+                    width: 12px;
+                    transform: rotate(45deg) translate(5px, 0);
+                    transform-origin: top;
+                }
+                &:nth-child(2) {
+                    transform: rotate(-45deg);
+                }
+                &:last-of-type {
+                    transform: rotate(45deg) translate(5px, -9px);
+                    width: 12px;
+                    transform-origin: bottom;
+                }
+            }
+        }
+        #{$this}__content {
+            opacity: 1;
+            left: 100%;
+            transform: translateX(-100%);
+        }
+    }
+    &__burger {
+        width: 24px;
+        height: 17px;
+        display: grid;
+        gap: 4px;
+        z-index: 11;
+        position: relative;
+        > span {
+            top: 0;
+            transition: transform 0.3s $animation, width 0.3s $animation;
+            display: block;
+            position: relative;
+            width: 24px;
+            height: 3px;
+            background-color: #000;
+            &:last-child {
+                width: 16px;
+            }
+        }
+    }
+    &__content {
+        left: 0;
+        transform: translateX(100%);
+        position: absolute;
+        top: calc(100% + 10px);
+        background-color: #fff;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        opacity: 0;
+        border-radius: 4px;
+        padding: 5px;
+        transition: transform 0.3s, left 0.3s, opacity 0.3s $animation;
+    }
+}
