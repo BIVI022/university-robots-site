@@ -1,10 +1,12 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, ReactElement } from 'react';
 import AnimatedAppend from '../../common/AnimatedAppend';
 import InfoButton from '../../common/Buttons/InfoButton';
 import Container from '../../common/layouts/Main/components/Container';
+import { NextPageWithLayout } from '@/pages/_app';
+import MainLayout from '@/common/layouts/Main/MainLayout';
 import styles from './Main.module.scss';
 
-const Main = () => {
+const Main: NextPageWithLayout = () => {
     const courses: CourseProps[] = [
         {
             title: 'Основы Java программирования',
@@ -184,5 +186,9 @@ const Course = ({
         </InfoButton>
     </div>
 );
+
+Main.getLayout = (page: ReactElement) => {
+    return <MainLayout>{page}</MainLayout>;
+};
 
 export default Main;

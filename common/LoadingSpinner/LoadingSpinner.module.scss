@@ -1,0 +1,27 @@
+@mixin loadingSpinner {
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    transition: border-color 0.3s;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 100%;
+    border: 2px solid;
+    border-color: var(--success-color);
+    border-bottom-color: transparent !important;
+    animation: rotate 0.75s infinite linear;
+}
+
+.loadingSpinner {
+    @include loadingSpinner;
+}

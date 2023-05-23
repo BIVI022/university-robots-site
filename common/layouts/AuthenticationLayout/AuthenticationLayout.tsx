@@ -1,0 +1,37 @@
+import { PropsWithChildren } from 'react';
+import { FaLongArrowAltLeft } from 'react-icons/fa';
+import Link from 'next/link';
+import styles from './AuthenticationLayout.module.scss';
+
+interface AuthenticationLayoutProps extends PropsWithChildren {
+    showGoBackBtn?: boolean;
+    label?: string;
+    description?: string;
+}
+
+const AuthenticationLayout = ({
+    showGoBackBtn = true,
+    label,
+    description,
+    children,
+}: AuthenticationLayoutProps) => {
+    return (
+        <div className={styles.auth}>
+            <div className={styles.auth__panel}>
+                {showGoBackBtn && (
+                    <Link href="/" className={styles.auth__goBackBtn}>
+                        <FaLongArrowAltLeft />
+                        <span>Вернуться на главную</span>
+                    </Link>
+                )}
+                {label && <h1 className={styles.auth__label}>{label}</h1>}
+                {description && (
+                    <p className={styles.auth__description}>{description}</p>
+                )}
+                <div>{children}</div>
+            </div>
+        </div>
+    );
+};
+
+export default AuthenticationLayout;

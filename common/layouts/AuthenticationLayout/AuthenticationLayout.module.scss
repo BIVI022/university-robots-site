@@ -1,0 +1,36 @@
+.auth {
+    background-color: #ebedef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    &__panel {
+        background-color: #fff;
+        padding: 2.5rem;
+        border: 1px solid #d8dbe0;
+        border-radius: 4px;
+        display: grid;
+        grid-gap: 10px;
+        gap: 10px;
+        width: min(80%, 550px);
+    }
+    &__goBackBtn {
+        color: #321fdb;
+        display: flex;
+        align-items: center;
+        grid-gap: 5px;
+        gap: 5px;
+        font-size: 0.8rem;
+        > span {
+            transform: translateY(2px);
+        }
+    }
+    &__label {
+        color: #3c4b64;
+        font-size: 2.025rem;
+    }
+    &__description {
+        color: #768192;
+        font-size: 0.785rem;
+    }
+}

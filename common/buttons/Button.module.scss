@@ -1,0 +1,73 @@
+.button {
+    $this: &;
+    background: transparent;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 4px;
+    // transition: background-color 0.3s, color 0.3s;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-color: #fff;
+    position: relative;
+    font-size: 0.9rem;
+    &:not(&_nodisable):disabled {
+        opacity: 0.6;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0.2rem var(--focus-color-50);
+    }
+    &_loading {
+        #{$this}__children {
+            visibility: hidden;
+        }
+    }
+    &_danger {
+        $color: var(--danger-color);
+        $secondColor: #fff;
+        border: 2px solid $color;
+        background-color: $color;
+        color: $secondColor;
+        #{$this}__loadingSpinner {
+            border-color: $secondColor;
+        }
+    }
+    &_success {
+        $color: var(--success-color);
+        $secondColor: #fff;
+        border: 2px solid $color;
+        background-color: $color;
+        color: $secondColor;
+        #{$this}__loadingSpinner {
+            border-color: $secondColor;
+        }
+    }
+    // &_warning {
+    //     $color: var(--warning-color);
+    //     border: 2px solid $color;
+    //     color: $color;
+    //     &:not(&_nohover):hover {
+    //         background-color: $color;
+    //         color: #fff;
+    //     }
+    // }
+    // &_info {
+    //     $color: var(--info-color);
+    //     $focusColor: #3391b9;
+    //     $secondColor: #fff;
+    //     border: 2px solid $color;
+    //     color: $color;
+    //     transition: border-color 0.3s;
+    //     &:not(&_nohover):hover {
+    //         background-color: $color;
+    //         color: $secondColor;
+    //     }
+    // }
+    &__loadingSpinner {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}

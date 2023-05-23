@@ -7,7 +7,8 @@
         gap: 50px;
         font-size: 18px;
         font-weight: 700;
-        > div {
+        > div,
+        > a {
             user-select: none;
             cursor: pointer;
             transition: background-color 0.3s;

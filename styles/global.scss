@@ -1,5 +1,5 @@
-@import "colors";
-@import "fonts";
+@import 'colors';
+@import 'fonts';
 
 * {
     padding: 0;
@@ -42,4 +42,9 @@ textarea {
 }
 textarea {
     resize: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
 }

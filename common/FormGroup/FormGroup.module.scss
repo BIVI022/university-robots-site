@@ -1,0 +1,20 @@
+.formGroup {
+    $this: &;
+    $errorColor: var(--danger-color);
+    &__helpArea {
+        margin-top: 2px;
+        font-size: 14px;
+        font-family: Circe;
+    }
+    &_error {
+        #{$this}__control {
+            > input {
+                border-color: $errorColor;
+                box-shadow: 0 0 5px 1px $errorColor;
+            }
+        }
+        [help-area='true'] {
+            color: $errorColor;
+        }
+    }
+}
