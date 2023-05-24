@@ -2,9 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import cookie from 'cookie';
 import UserModel from '@/db/models/UserModel';
 import AuthService from '@/service/backend/AuthService';
-import { withAuth } from '@/middlewares/auth-middleware';
 
-export default withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { method } = req;
     switch (method) {
         case 'POST':
@@ -58,4 +57,4 @@ export default withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
             res.setHeader('Allow', ['POST']);
             res.status(405).end(`Method ${method} Not Allowed`);
     }
-});
+};

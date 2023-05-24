@@ -1,16 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authApi } from '../endpoints/auth';
-import { USER_ROLES, User } from '@/types/api/auth';
+import { User } from '@/types/api/auth';
 
 const initialState: {
     user: User | null;
 } = {
-    user: {
-        email: 'asdas',
-        id: 1,
-        name: 's',
-        role: USER_ROLES.ADMIN,
-    },
+    user: null,
 };
 
 const authSlice = createSlice({

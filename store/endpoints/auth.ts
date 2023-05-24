@@ -4,7 +4,7 @@ import { api } from '../api';
 export const authApi = api.injectEndpoints({
     endpoints: (build) => ({
         getCurrentUser: build.query<User, void>({
-            query: () => '/currentUser',
+            query: () => '/current-user',
         }),
         login: build.mutation<string, { email: string; password: string }>({
             query: ({ email, password }) => ({
