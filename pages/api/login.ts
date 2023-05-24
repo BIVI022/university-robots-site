@@ -1,50 +1,55 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-// import cookie from 'cookie';
-// import prisma from '../../../lib/prisma';
-// import AuthService from '@/service/AuthService';
-// import { SESSION_ID_COOKIE } from '@/../types/api/auth';
+import cookie from 'cookie';
 import UserModel from '@/db/models/UserModel';
+import AuthService from '@/service/backend/AuthService';
+import { withAuth } from '@/middlewares/auth-middleware';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
     const { method } = req;
     switch (method) {
         case 'POST':
             try {
-                // const { signature, address } = req.body;
-                // const lowerCaseAddress = address.toLowerCase();
-                // const user = await prisma.user.findFirst({
-                //     where: { walletAddress: lowerCaseAddress },
-                // });
-
-                // if (!user) {
-                //     return res
-                //         .status(400)
-                //         .json({ message: 'User is not exist' });
-                // }
-
-                // const expectedAddress = (
-                //     await ethers.utils.verifyMessage(user.nonce, signature)
-                // ).toLowerCase();
-                // if (expectedAddress !== user.walletAddress) {
-                //     return res
-                //         .status(401)
-                //         .json({ message: 'Invalid signature' });
-                // }
-
-                // const sessionId = await AuthService.openUserSession(user.id);
-                // res.setHeader(
-                //     'Set-Cookie',
-                //     cookie.serialize(SESSION_ID_COOKIE, sessionId, {
-                //         htt  pOnly: true,
-                //         // secure: process.env.NODE_ENV === 'prod',
-                //         sameSite: 'strict',
-                //         // domain: process.env.NODE_ENV === 'prod' ? `.${process.env.DOMAIN}` : '',
-                //         path: '/',
-                //     })
-                // );
-
-                // UserModel.fin;
-                res.json({ ok: true });
+                const { email, password } = req.body;
+                const user = await UserModel.findOne({
+                    where: {
+                        email,
+                    },
+                });
+                if (!user) {
+                    return res.status(400).json({
+                        errors: [
+                            {
+                                value: 'password',
+                                message: 'Неверные данные для входа',
+                            },
+                        ],
+                    });
+                }
+                const isValidPassword = await UserModel.validatePassword(
+                    password,
+                    user.password
+                );
+                if (!isValidPassword) {
+                    return res.status(400).json({
+                        errors: [
+                            {
+                                value: 'password',
+                                message: 'Неверные данные для входа',
+                            },
+                        ],
+                    });
+                }
+                const sessionId = await AuthService.openUserSession(user.id);
+                res.setHeader(
+                    'Set-Cookie',
+                    cookie.serialize(AuthService.SESSION_ID_COOKIE, sessionId, {
+                        httpOnly: true,
+                        secure: process.env.NODE_ENV === 'production',
+                        sameSite: 'strict',
+                        path: '/',
+                    })
+                );
+                res.status(200).end();
             } catch (_error) {
                 res.json({ ok: false });
             }
@@ -53,4 +58,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             res.setHeader('Allow', ['POST']);
             res.status(405).end(`Method ${method} Not Allowed`);
     }
-};
+});

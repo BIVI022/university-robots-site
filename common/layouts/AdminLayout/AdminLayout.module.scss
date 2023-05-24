@@ -1,0 +1,62 @@
+.adminLayout {
+    background-color: rgb(234, 244, 255);
+    min-height: calc(100 * var(--vh));
+    display: flex;
+    flex-direction: column;
+    &__content {
+        width: 100%;
+        flex: 1 1 auto;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        grid-gap: 25px;
+        gap: 25px;
+        margin-top: 25px;
+        padding-bottom: 10px;
+    }
+    @media (max-width: 995px) {
+        &__content {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.firstTimeLoadingView {
+    background-color: #fff;
+    // background-color: #ebedef;
+    height: calc(100 * var(--vh, 1vh));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.suspenseView {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadingSpinner {
+    border-color: #3c4b64;
+    border-width: 3px;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.logoLoadingSpinner {
+    display: block;
+    max-width: 36px;
+    max-height: 36px;
+    animation: rotate 0.75s infinite linear;
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

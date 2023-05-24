@@ -24,10 +24,5 @@ function initialize() {
             // logging: process.env.NODE_ENV === 'dev' ? console.log : false
         }
     );
-    sync(sequelizeInstance);
     return sequelizeInstance;
-}
-
-async function sync(sequelizeInstance: Sequelize) {
-    await sequelizeInstance.sync({ alter: true });
 }

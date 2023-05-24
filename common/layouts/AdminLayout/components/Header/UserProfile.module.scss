@@ -1,0 +1,55 @@
+.userProfile {
+    position: relative;
+    &__username {
+        padding: 5px;
+        cursor: pointer;
+    }
+    &__popup {
+        position: absolute;
+        top: 100%;
+        box-shadow: 0px 4px 12px rgb(48 69 167 / 15%);
+        background-color: #fff;
+        z-index: 10;
+        animation: show-popup 0.3s;
+        width: 100%;
+        color: #a6aab9;
+    }
+    &__logoutBtn {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        > span {
+            font-size: 13px;
+            margin-left: 5px;
+        }
+    }
+    &__userIcon {
+        display: none;
+    }
+    @keyframes show-popup {
+        from {
+            top: 30px;
+            opacity: 0;
+        }
+        to {
+            top: 100%;
+            opacity: 1;
+        }
+    }
+    @media (max-width: 300px) {
+        &__userIcon {
+            display: block;
+            font-size: 20px;
+        }
+        &__username {
+            > span {
+                display: none;
+            }
+        }
+        &__popup {
+            width: auto;
+            right: 0;
+        }
+    }
+}

@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { FormGroupError } from '@/common/FormGroup';
 import { useRegisterMutation } from '@/store/endpoints/auth';
 import styles from './Register.module.scss';
+import { toast } from 'react-toastify';
 
 const Login: NextPageWithLayout = () => {
     const router = useRouter();
@@ -21,22 +22,24 @@ const Login: NextPageWithLayout = () => {
     const [confirmPassword, setConfirmPassword] = useState('123');
     const [errors, setErrors] = useState<FormGroupError[]>([]);
 
-    const onLogin: FormEventHandler = async (e) => {
+    const onSubmit: FormEventHandler = async (e) => {
         e.preventDefault();
         const isValidData = validateData();
         if (!isValidData) {
             return;
         }
         try {
-            const response = await register({ email, password, name }).unwrap();
-            if (response.ok === true) {
-                router.push('/');
-            } else {
-                // const errors = (response as any).payload.error.data.message;
-                // setErrors(errors);
-            }
+            const request = register({ email, password, name }).unwrap();
+            toast.promise(request, {
+                pending: 'Регистрируем...',
+                success: 'Рагестрация завершена',
+                error: 'Ошибка во время регистрации',
+            });
+            await request;
+            router.push('/login');
         } catch (e: any) {
-            console.log(e);
+            const errors = e.data.errors;
+            setErrors(errors);
         }
     };
 
@@ -92,7 +95,7 @@ const Login: NextPageWithLayout = () => {
 
     return (
         <div className={styles.login}>
-            <form method="#" onSubmit={onLogin}>
+            <form method="#" onSubmit={onSubmit}>
                 <AuthenticationFormGroup<string>
                     icon={<AiOutlineMail />}
                     inputId="email"
@@ -139,7 +142,7 @@ const Login: NextPageWithLayout = () => {
                 <SuccessButton
                     className={styles.login__submit}
                     loading={isLoading}
-                    onClick={onLogin}
+                    onClick={onSubmit}
                 >
                     Зарегистрироваться
                 </SuccessButton>

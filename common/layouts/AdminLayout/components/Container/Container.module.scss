@@ -1,0 +1,15 @@
+.container {
+    $zoom: 0.9;
+    max-width: 1500px * $zoom;
+    margin: 0 auto;
+    padding: 0 10px;
+    @media (max-width: 1250px) {
+        max-width: 970px * $zoom;
+    }
+    @media (max-width: 992px) {
+        max-width: 750px * $zoom;
+    }
+    @media (max-width: 768px) {
+        max-width: 95%;
+    }
+}

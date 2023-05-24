@@ -15,7 +15,6 @@ export const authApi = api.injectEndpoints({
                     password,
                 },
             }),
-            transformResponse: (response: { token: string }) => response.token,
         }),
         register: build.mutation<
             any,
@@ -34,4 +33,5 @@ export const authApi = api.injectEndpoints({
     }),
 });
 
-export const { useGetCurrentUserQuery, useRegisterMutation } = authApi;
+export const { useGetCurrentUserQuery, useRegisterMutation, useLoginMutation } =
+    authApi;

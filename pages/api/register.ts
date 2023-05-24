@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     password: hashPassword,
                     role: USER_ROLES.USER,
                 });
-                res.json({ ok: true });
+                res.status(200).end();
             } catch (_error) {
                 res.json({ ok: false });
             }

@@ -1,7 +1,9 @@
 import { PropsWithChildren } from 'react';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 import Link from 'next/link';
+import { ToastContainer } from 'react-toastify';
 import styles from './AuthenticationLayout.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface AuthenticationLayoutProps extends PropsWithChildren {
     showGoBackBtn?: boolean;
@@ -30,6 +32,18 @@ const AuthenticationLayout = ({
                 )}
                 <div>{children}</div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };

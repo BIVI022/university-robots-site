@@ -6,9 +6,10 @@ import SuccessButton from '@/common/buttons/SuccessButton';
 import { AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineLockClosed } from 'react-icons/hi';
 import { useAppDispatch } from '@/store/store';
-import { login } from '@/store/slices/auth';
 import { useRouter } from 'next/router';
 import { FormGroupError } from '@/common/FormGroup';
+import { useLoginMutation } from '@/store/endpoints/auth';
+import { isRequestFailed } from '@/service/utils';
 import styles from './Login.module.scss';
 
 const Login: NextPageWithLayout = () => {
@@ -16,27 +17,21 @@ const Login: NextPageWithLayout = () => {
 
     const router = useRouter();
 
+    const [login, { isLoading }] = useLoginMutation();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState<FormGroupError[]>([]);
 
     const onLogin: FormEventHandler = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        const response = await dispatch(login({ email, password }));
-        if (response.payload === true) {
-            router.push('/admin');
+        const response = await login({ email, password });
+        console.log(response);
+        if (isRequestFailed(response)) {
+            setErrors((response as any).error.data.errors);
         } else {
-            // const message = (response as any).payload.error.data.message;
-            // setErrors([
-            //     {
-            //         value: 'password',
-            //         message,
-            //     },
-            // ]);
+            router.push('/');
         }
-        setLoading(false);
     };
 
     return (
@@ -63,7 +58,7 @@ const Login: NextPageWithLayout = () => {
                 />
                 <SuccessButton
                     className={styles.login__submit}
-                    loading={loading}
+                    loading={isLoading}
                     onClick={onLogin}
                 >
                     Войти

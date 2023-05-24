@@ -4,9 +4,11 @@ import {
     InferAttributes,
     InferCreationAttributes,
     CreationOptional,
+    Association,
 } from 'sequelize';
 import bcrypt from 'bcrypt';
 import { sequelize } from '../db';
+import UserSession from './UserSession';
 
 export enum USER_ROLES {
     USER = 'user',
@@ -33,6 +35,10 @@ export default class UserModel extends Model<
     ): Promise<boolean> {
         return bcrypt.compare(password, hashPassword);
     }
+
+    static associations: {
+        session: Association<UserModel, UserSession>;
+    };
 }
 
 UserModel.init(
