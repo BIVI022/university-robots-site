@@ -62,6 +62,7 @@ const Navigation = ({ className = '' }: NavigationProps) => {
             <div onClick={scrollToContacts}>Контакты</div>
             <div onClick={scrollToCoursesSection}>Курсы</div>
             <Link href="/login">Войти</Link>
+            <Link href="/register">Регистрация</Link>
         </nav>
     );
 };

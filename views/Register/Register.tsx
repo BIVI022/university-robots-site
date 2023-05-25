@@ -16,10 +16,10 @@ const Login: NextPageWithLayout = () => {
 
     const [register, { isLoading }] = useRegisterMutation();
 
-    const [email, setEmail] = useState('test@mail.ru');
-    const [name, setName] = useState('Test');
-    const [password, setPassword] = useState('123');
-    const [confirmPassword, setConfirmPassword] = useState('123');
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState<FormGroupError[]>([]);
 
     const onSubmit: FormEventHandler = async (e) => {
